@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<h2>Search</h2>
+<ion-input label="Search" placeholder="Movie Name" [(ngModel)]="MovieName"></ion-input>
   <ion-button expand="block">Search</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let m of TodaysTrendingMovies">
+      <ion-label>{{m.TodaysTrendingMovies}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
