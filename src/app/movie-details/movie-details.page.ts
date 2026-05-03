@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
+import { Data } from '../services/data';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,9 +12,17 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/a
 })
 export class MovieDetailsPage implements OnInit {
 
-  constructor() { }
+movie: any;
+
+  constructor(private md: Data) { }
 
   ngOnInit() {
+    this.getMovieFromStorage();
+  }
+
+  async getMovieFromStorage() {
+    this.movie = await this.md.get("movie")
+    console.log(this.movie)
   }
 
 }
