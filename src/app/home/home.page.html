@@ -8,8 +8,5 @@
 
 <ion-content [fullscreen]="true">
 <ion-input label="Search" placeholder="Movie Name" [(ngModel)]="MovieName"></ion-input>
-  <ion-button expand="block">Search</ion-button>
-    <ion-item (click)="openTrendingMovies(t)" *ngFor="let t of TodaysTrendingMovies">
-      <ion-label>{{t.title}}</ion-label>
-    </ion-item>
+  <ion-button (click)="openMovies()" expand="block">Search</ion-button>
 </ion-content>
