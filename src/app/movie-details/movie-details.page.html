@@ -11,14 +11,11 @@
     </ion-toolbar>
   </ion-header>
   <ion-button fill="clear">ADD TO FAVOURITES</ion-button>
-  <ion-card>
+  <ion-card *ngFor="let movie of movieInfo">
+    <img src="https://api.themoviedb.org{{movie.profile_path}}" />
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{movie.id}}</ion-card-title>
+      <ion-card-subtitle>{{movie.character}}</ion-card-subtitle>
     </ion-card-header>
-  
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
   </ion-card>
 </ion-content>
