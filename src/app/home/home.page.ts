@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonIcon, IonButtons } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { Data } from '../services/data';
 import { HttpOptions } from '@capacitor/core';
 import { MyHttp } from '../services/my-http';
+import { addIcons } from 'ionicons';
+import {heart} from 'ionicons/icons';
 
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html', 
-  imports: [IonHeader, IonToolbar, CommonModule, IonTitle, IonContent, IonButton, RouterLink, IonInput, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle],
+  imports: [IonHeader, IonToolbar, CommonModule, IonTitle, IonContent, IonButton, RouterLink, IonInput, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonIcon, IonButtons],
 })
 export class HomePage {
   
@@ -22,7 +24,9 @@ export class HomePage {
     url: "https://api.themoviedb.org/3/trending/movie/day?api_key=" + this.apiKey 
   }
 
-  constructor(private md: Data, private router: Router, private mh: MyHttp) {}
+  constructor(private md: Data, private router: Router, private mh: MyHttp) {
+    addIcons({ heart });
+  }
 
 ngOnInit() {
   this.TodaysTrendingMovies();

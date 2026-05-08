@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonIcon } from '@ionic/angular/standalone';
 import { Data } from '../services/data';
 import { HttpOptions } from '@capacitor/core';
 import { MyHttp } from '../services/my-http';
+import { addIcons } from 'ionicons';
+import {heart} from 'ionicons/icons';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.page.html',
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonIcon]
 })
 export class MovieDetailsPage implements OnInit {
 
@@ -21,7 +23,9 @@ export class MovieDetailsPage implements OnInit {
     url: "https://api.themoviedb.org/3/movie/862/credits?api_key=" +this.apiKey + "&s="
   }
 
-  constructor(private md: Data, private mh:MyHttp) { }
+  constructor(private md: Data, private mh:MyHttp) {
+    addIcons({heart});
+   }
 
   ngOnInit() {
     this.getMovieSearch();

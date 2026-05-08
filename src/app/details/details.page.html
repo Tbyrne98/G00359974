@@ -5,8 +5,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar Actor Name>
   <ion-button size="large">
-    Right Icon
     <ion-icon slot="end" name="heart"></ion-icon>
   </ion-button>
+</ion-toolbar>
+</ion-header>
+<ion-card *ngFor="let movie of movieInfo">
+<img src="poster_path" />
+<ion-card-header>
+  <ion-card-title>{{movie.also_known_as}}</ion-card-title>
+  <ion-card-subtitle>{{movie.birthday}}</ion-card-subtitle>
+  <ion-card-subtitle>{{movie.place_of_birth}}</ion-card-subtitle>
+  <ion-card-subtitle>{{movie.biography}}</ion-card-subtitle>
+</ion-card-header>
+</ion-card>
 </ion-content>

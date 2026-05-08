@@ -1,8 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      G00359974 <ion-button [routerLink]="['/favourites']"></ion-button>
-    </ion-title>
+    <ion-title>G00359974</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/favourites']" fill="clear">
+        <ion-icon slot="icon-only"name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +15,7 @@
 <ion-input label="Search" placeholder="Movie Name" [(ngModel)]="MovieName"></ion-input>
   <ion-button (click)="openMovies()" expand="block">Search</ion-button>
   <ion-card *ngFor="let movie of movieInfo">
-    <img src="https://api.themoviedb.org{{movie.poster_path}}" />
+    <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
     <ion-card-header>
       <ion-card-title>{{movie.id}}</ion-card-title>
       <ion-card-subtitle>{{movie.overview}}</ion-card-subtitle>
