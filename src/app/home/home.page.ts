@@ -13,6 +13,7 @@ import {heart} from 'ionicons/icons';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html', 
+  standalone: true,
   imports: [IonHeader, IonToolbar, CommonModule, IonTitle, IonContent, IonButton, RouterLink, IonInput, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonIcon, IonButtons],
 })
 export class HomePage {
@@ -42,7 +43,12 @@ async TodaysTrendingMovies() {
 
   async openMovies() {
     await this.md.set("MovieSearch", this.MovieName);
-    this.router.navigate(['/movie-details'])
+    let searchUrl = "https://api.themoviedb.org/3/search/movie?query=" + this.MovieName + "&api_key=" + this.apiKey ;
+    this.options.url = searchUrl;
+    let result = await this.mh.get(this.options);
+    this.movieInfo = result.data.results;
+
+    console.log(this.movieInfo);
   }
 
   async openMovieDetails(movie:any) {
