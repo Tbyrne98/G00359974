@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
 <ion-input label="Search" placeholder="Movie Name" [(ngModel)]="MovieName"></ion-input>
   <ion-button (click)="openMovies()" expand="block">Search</ion-button>
-  <ion-card *ngFor="let movie of movieInfo">
+  <ion-card (click)="openMovieDetails(movie)" *ngFor="let movie of movieInfo">
     <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
     <ion-card-header>
       <ion-card-title>{{movie.id}}</ion-card-title>

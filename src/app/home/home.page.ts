@@ -44,4 +44,10 @@ async TodaysTrendingMovies() {
     await this.md.set("MovieSearch", this.MovieName);
     this.router.navigate(['/movie-details'])
   }
+
+  async openMovieDetails(movie:any) {
+    await this.md.set("MovieDetails", movie)
+    this.router.navigate(['/movie-details'])
+  }
+
 }
