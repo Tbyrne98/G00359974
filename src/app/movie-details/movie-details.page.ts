@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonIcon, IonList, IonItem, IonButtons, IonItemDivider } from '@ionic/angular/standalone';
 import { Data } from '../services/data';
 import { MyHttp } from '../services/my-http';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
 import {heart, home, person} from 'ionicons/icons';
 import { HttpOptions } from '@capacitor/core';
@@ -26,13 +26,12 @@ export class MovieDetailsPage implements OnInit {
   options: HttpOptions = {
     url: ""
   };
-  router: any;
   Details: string = ""
   Favourite: any[] = [];
   actor: string = ""
 
 
-  constructor(private md: Data, private mh:MyHttp) {
+  constructor(private md: Data, private mh:MyHttp, private router: Router) {
     addIcons({heart, home});
    }
 
@@ -54,16 +53,21 @@ export class MovieDetailsPage implements OnInit {
 }
 
 async openDetails(person: any) {
-  await this.md.set("DetailsSearch", person);
+  await this.md.set("Details", person.id);
   this.router.navigate(['/details'])
 }
   
 isFavourites = false;
 
-FavouritesList() {
-  this.isFavourites = !this.isFavourites;
+async FavouritesList() {
+  let favourites = await this.md.get('Favourites')
 
+  if(!favourites) {
+    favourites = [];
+  }
+  favourites.push(this.Movie);
+  await this.md.set('Favourites', favourites);
+  this.isFavourites = true;
+  console.log(favourites)
 }
-
-
 }

@@ -24,11 +24,12 @@ export class DetailsPage implements OnInit {
   constructor(private mh:MyHttp, private md:Data) { }
 
   ngOnInit() {
+    this.getDetails();
 
   }
   async getDetails() {
     this.Details = await this.md.get('Details');
-    this.options.url = this.options.url.concat(this.Details)
+    this.options.url = "https://api.themoviedb.org/3/person/" + this.Details + "?api_key=" + this.apiKey
     let result = await this.mh.get(this.options)
     this.movieInfo = result.data
     console.log(this.movieInfo)
